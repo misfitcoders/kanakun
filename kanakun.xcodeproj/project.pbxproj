@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69964D3D24BB665B005772A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69964D3C24BB665B005772A8 /* Colors.swift */; };
+		69964D3E24BB665B005772A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69964D3C24BB665B005772A8 /* Colors.swift */; };
 		69B3BEBF24BB2F8900129249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEBE24BB2F8900129249 /* AppDelegate.swift */; };
 		69B3BEC124BB2F8900129249 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEC024BB2F8900129249 /* SceneDelegate.swift */; };
 		69B3BEC424BB2F8900129249 /* kanakun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEC224BB2F8900129249 /* kanakun.xcdatamodeld */; };
@@ -16,6 +18,8 @@
 		69B3BECE24BB2F8B00129249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B3BECC24BB2F8B00129249 /* LaunchScreen.storyboard */; };
 		69B3BED924BB2F8B00129249 /* kanakunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BED824BB2F8B00129249 /* kanakunTests.swift */; };
 		69B3BEE424BB2F8B00129249 /* kanakunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEE324BB2F8B00129249 /* kanakunUITests.swift */; };
+		69B3BEFE24BB307400129249 /* Jisho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B3BEF824BB2FDF00129249 /* Jisho.framework */; };
+		69B3BEFF24BB307400129249 /* Jisho.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69B3BEF824BB2FDF00129249 /* Jisho.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +37,38 @@
 			remoteGlobalIDString = 69B3BEBA24BB2F8900129249;
 			remoteInfo = kanakun;
 		};
+		69B3BEF724BB2FDF00129249 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 694A621B24B5F9630062C108;
+			remoteInfo = Jisho;
+		};
+		69B3BEF924BB2FDF00129249 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 694A622424B5F9640062C108;
+			remoteInfo = JishoTests;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		69B3BF0024BB307400129249 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				69B3BEFF24BB307400129249 /* Jisho.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		69964D3C24BB665B005772A8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		69B3BEBB24BB2F8900129249 /* kanakun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanakun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B3BEBE24BB2F8900129249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69B3BEC024BB2F8900129249 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +84,7 @@
 		69B3BEDF24BB2F8B00129249 /* kanakunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanakunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B3BEE324BB2F8B00129249 /* kanakunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanakunUITests.swift; sourceTree = "<group>"; };
 		69B3BEE524BB2F8B00129249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Jisho.xcodeproj; path = ../../frameworks/jisho/Jisho.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69B3BEFE24BB307400129249 /* Jisho.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +116,7 @@
 		69B3BEB224BB2F8900129249 = {
 			isa = PBXGroup;
 			children = (
+				69B3BEF124BB2FC700129249 /* Frameworks */,
 				69B3BEBD24BB2F8900129249 /* kanakun */,
 				69B3BED724BB2F8B00129249 /* kanakunTests */,
 				69B3BEE224BB2F8B00129249 /* kanakunUITests */,
@@ -109,6 +145,7 @@
 				69B3BECF24BB2F8B00129249 /* Info.plist */,
 				69B3BEC224BB2F8900129249 /* kanakun.xcdatamodeld */,
 				69B3BEC924BB2F8B00129249 /* Preview Content */,
+				69964D3C24BB665B005772A8 /* Colors.swift */,
 			);
 			path = kanakun;
 			sourceTree = "<group>";
@@ -139,6 +176,23 @@
 			path = kanakunUITests;
 			sourceTree = "<group>";
 		};
+		69B3BEF124BB2FC700129249 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		69B3BEF324BB2FDF00129249 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69B3BEF824BB2FDF00129249 /* Jisho.framework */,
+				69B3BEFA24BB2FDF00129249 /* JishoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +203,7 @@
 				69B3BEB724BB2F8900129249 /* Sources */,
 				69B3BEB824BB2F8900129249 /* Frameworks */,
 				69B3BEB924BB2F8900129249 /* Resources */,
+				69B3BF0024BB307400129249 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,7 +273,7 @@
 				};
 			};
 			buildConfigurationList = 69B3BEB624BB2F8900129249 /* Build configuration list for PBXProject "kanakun" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -228,6 +283,12 @@
 			mainGroup = 69B3BEB224BB2F8900129249;
 			productRefGroup = 69B3BEBC24BB2F8900129249 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 69B3BEF324BB2FDF00129249 /* Products */;
+					ProjectRef = 69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				69B3BEBA24BB2F8900129249 /* kanakun */,
@@ -236,6 +297,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		69B3BEF824BB2FDF00129249 /* Jisho.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Jisho.framework;
+			remoteRef = 69B3BEF724BB2FDF00129249 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		69B3BEFA24BB2FDF00129249 /* JishoTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = JishoTests.xctest;
+			remoteRef = 69B3BEF924BB2FDF00129249 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		69B3BEB924BB2F8900129249 /* Resources */ = {
@@ -270,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69B3BEC424BB2F8900129249 /* kanakun.xcdatamodeld in Sources */,
+				69964D3D24BB665B005772A8 /* Colors.swift in Sources */,
 				69B3BEBF24BB2F8900129249 /* AppDelegate.swift in Sources */,
 				69B3BEC624BB2F8900129249 /* ContentView.swift in Sources */,
 				69B3BEC124BB2F8900129249 /* SceneDelegate.swift in Sources */,
@@ -281,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69B3BED924BB2F8B00129249 /* kanakunTests.swift in Sources */,
+				69964D3E24BB665B005772A8 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +525,7 @@
 				DEVELOPMENT_TEAM = 2SKBCUTH6B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = kanakun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +547,7 @@
 				DEVELOPMENT_TEAM = 2SKBCUTH6B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = kanakun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
