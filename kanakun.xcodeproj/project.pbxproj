@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69964D3D24BB665B005772A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69964D3C24BB665B005772A8 /* Colors.swift */; };
-		69964D3E24BB665B005772A8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69964D3C24BB665B005772A8 /* Colors.swift */; };
+		69964D4724BC4E6B005772A8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69964D4624BC4E6B005772A8 /* GameView.swift */; };
 		69B3BEBF24BB2F8900129249 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEBE24BB2F8900129249 /* AppDelegate.swift */; };
 		69B3BEC124BB2F8900129249 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEC024BB2F8900129249 /* SceneDelegate.swift */; };
 		69B3BEC424BB2F8900129249 /* kanakun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEC224BB2F8900129249 /* kanakun.xcdatamodeld */; };
@@ -16,40 +16,23 @@
 		69B3BEC824BB2F8B00129249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69B3BEC724BB2F8B00129249 /* Assets.xcassets */; };
 		69B3BECB24BB2F8B00129249 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69B3BECA24BB2F8B00129249 /* Preview Assets.xcassets */; };
 		69B3BECE24BB2F8B00129249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B3BECC24BB2F8B00129249 /* LaunchScreen.storyboard */; };
-		69B3BED924BB2F8B00129249 /* kanakunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BED824BB2F8B00129249 /* kanakunTests.swift */; };
-		69B3BEE424BB2F8B00129249 /* kanakunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3BEE324BB2F8B00129249 /* kanakunUITests.swift */; };
-		69B3BEFE24BB307400129249 /* Jisho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B3BEF824BB2FDF00129249 /* Jisho.framework */; };
-		69B3BEFF24BB307400129249 /* Jisho.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69B3BEF824BB2FDF00129249 /* Jisho.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		69E1BF2C24C3143F00C79529 /* GamePlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF2B24C3143F00C79529 /* GamePlayController.swift */; };
+		69E1BF3124C318AD00C79529 /* jisho-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 69E1BF3024C318AD00C79529 /* jisho-swift */; };
+		69E1BF3324C33D9000C79529 /* GameIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF3224C33D9000C79529 /* GameIndicator.swift */; };
+		69E1BF3824C34EFB00C79529 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF3724C34EFB00C79529 /* Array.swift */; };
+		69E1BF3D24C356D700C79529 /* GamePad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF3C24C356D700C79529 /* GamePad.swift */; };
+		69E1BF4124C36CDC00C79529 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF4024C36CDC00C79529 /* String.swift */; };
+		69E1BF5324C499AE00C79529 /* kanakunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF5224C499AE00C79529 /* kanakunTests.swift */; };
+		69E1BF5D24C4DC9C00C79529 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E1BF5C24C4DC9B00C79529 /* constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		69B3BED524BB2F8B00129249 /* PBXContainerItemProxy */ = {
+		69E1BF5524C499AE00C79529 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 69B3BEB324BB2F8900129249 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 69B3BEBA24BB2F8900129249;
 			remoteInfo = kanakun;
-		};
-		69B3BEE024BB2F8B00129249 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69B3BEB324BB2F8900129249 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 69B3BEBA24BB2F8900129249;
-			remoteInfo = kanakun;
-		};
-		69B3BEF724BB2FDF00129249 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 694A621B24B5F9630062C108;
-			remoteInfo = Jisho;
-		};
-		69B3BEF924BB2FDF00129249 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 694A622424B5F9640062C108;
-			remoteInfo = JishoTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -60,7 +43,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				69B3BEFF24BB307400129249 /* Jisho.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		69964D3C24BB665B005772A8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		69964D4624BC4E6B005772A8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		69B3BEBB24BB2F8900129249 /* kanakun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kanakun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B3BEBE24BB2F8900129249 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69B3BEC024BB2F8900129249 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,13 +61,16 @@
 		69B3BECA24BB2F8B00129249 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		69B3BECD24BB2F8B00129249 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69B3BECF24BB2F8B00129249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69B3BED424BB2F8B00129249 /* kanakunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanakunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69B3BED824BB2F8B00129249 /* kanakunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanakunTests.swift; sourceTree = "<group>"; };
-		69B3BEDA24BB2F8B00129249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69B3BEDF24BB2F8B00129249 /* kanakunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanakunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		69B3BEE324BB2F8B00129249 /* kanakunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanakunUITests.swift; sourceTree = "<group>"; };
-		69B3BEE524BB2F8B00129249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Jisho.xcodeproj; path = ../../frameworks/jisho/Jisho.xcodeproj; sourceTree = "<group>"; };
+		69E1BF2B24C3143F00C79529 /* GamePlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayController.swift; sourceTree = "<group>"; };
+		69E1BF3224C33D9000C79529 /* GameIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameIndicator.swift; sourceTree = "<group>"; };
+		69E1BF3724C34EFB00C79529 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		69E1BF3C24C356D700C79529 /* GamePad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePad.swift; sourceTree = "<group>"; };
+		69E1BF4024C36CDC00C79529 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		69E1BF5024C499AE00C79529 /* kanakunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kanakunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E1BF5224C499AE00C79529 /* kanakunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kanakunTests.swift; sourceTree = "<group>"; };
+		69E1BF5424C499AE00C79529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69E1BF5B24C4C09000C79529 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = kanakun/MyPlayground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		69E1BF5C24C4DC9B00C79529 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,18 +78,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69B3BEFE24BB307400129249 /* Jisho.framework in Frameworks */,
+				69E1BF3124C318AD00C79529 /* jisho-swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69B3BED124BB2F8B00129249 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		69B3BEDC24BB2F8B00129249 /* Frameworks */ = {
+		69E1BF4D24C499AE00C79529 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,14 +92,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69964D4424BC4D84005772A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				69B3BECC24BB2F8B00129249 /* LaunchScreen.storyboard */,
+				69B3BEC524BB2F8900129249 /* ContentView.swift */,
+				69964D4624BC4E6B005772A8 /* GameView.swift */,
+				69E1BF3224C33D9000C79529 /* GameIndicator.swift */,
+				69E1BF3C24C356D700C79529 /* GamePad.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		69964D4524BC4DC3005772A8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				69964D3C24BB665B005772A8 /* Colors.swift */,
+				69B3BEC724BB2F8B00129249 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		69B3BEB224BB2F8900129249 = {
 			isa = PBXGroup;
 			children = (
-				69B3BEF124BB2FC700129249 /* Frameworks */,
+				69E1BF5A24C4C04B00C79529 /* Playgrounds */,
+				69B3BEF124BB2FC700129249 /* Packages */,
 				69B3BEBD24BB2F8900129249 /* kanakun */,
-				69B3BED724BB2F8B00129249 /* kanakunTests */,
-				69B3BEE224BB2F8B00129249 /* kanakunUITests */,
+				69E1BF5124C499AE00C79529 /* kanakunTests */,
 				69B3BEBC24BB2F8900129249 /* Products */,
+				69E1BF4624C4966500C79529 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,8 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				69B3BEBB24BB2F8900129249 /* kanakun.app */,
-				69B3BED424BB2F8B00129249 /* kanakunTests.xctest */,
-				69B3BEDF24BB2F8B00129249 /* kanakunUITests.xctest */,
+				69E1BF5024C499AE00C79529 /* kanakunTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,15 +137,16 @@
 		69B3BEBD24BB2F8900129249 /* kanakun */ = {
 			isa = PBXGroup;
 			children = (
+				69E1BF3624C34EE800C79529 /* Extensions */,
+				69E1BF2A24C3142100C79529 /* Controllers */,
+				69964D4524BC4DC3005772A8 /* Assets */,
+				69964D4424BC4D84005772A8 /* Views */,
 				69B3BEBE24BB2F8900129249 /* AppDelegate.swift */,
 				69B3BEC024BB2F8900129249 /* SceneDelegate.swift */,
-				69B3BEC524BB2F8900129249 /* ContentView.swift */,
-				69B3BEC724BB2F8B00129249 /* Assets.xcassets */,
-				69B3BECC24BB2F8B00129249 /* LaunchScreen.storyboard */,
 				69B3BECF24BB2F8B00129249 /* Info.plist */,
 				69B3BEC224BB2F8900129249 /* kanakun.xcdatamodeld */,
 				69B3BEC924BB2F8B00129249 /* Preview Content */,
-				69964D3C24BB665B005772A8 /* Colors.swift */,
+				69E1BF5C24C4DC9B00C79529 /* constants.swift */,
 			);
 			path = kanakun;
 			sourceTree = "<group>";
@@ -158,39 +159,52 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		69B3BED724BB2F8B00129249 /* kanakunTests */ = {
+		69B3BEF124BB2FC700129249 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				69B3BED824BB2F8B00129249 /* kanakunTests.swift */,
-				69B3BEDA24BB2F8B00129249 /* Info.plist */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		69E1BF2A24C3142100C79529 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				69E1BF2B24C3143F00C79529 /* GamePlayController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		69E1BF3624C34EE800C79529 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				69E1BF3724C34EFB00C79529 /* Array.swift */,
+				69E1BF4024C36CDC00C79529 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		69E1BF4624C4966500C79529 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69E1BF5124C499AE00C79529 /* kanakunTests */ = {
+			isa = PBXGroup;
+			children = (
+				69E1BF5224C499AE00C79529 /* kanakunTests.swift */,
+				69E1BF5424C499AE00C79529 /* Info.plist */,
 			);
 			path = kanakunTests;
 			sourceTree = "<group>";
 		};
-		69B3BEE224BB2F8B00129249 /* kanakunUITests */ = {
+		69E1BF5A24C4C04B00C79529 /* Playgrounds */ = {
 			isa = PBXGroup;
 			children = (
-				69B3BEE324BB2F8B00129249 /* kanakunUITests.swift */,
-				69B3BEE524BB2F8B00129249 /* Info.plist */,
+				69E1BF5B24C4C09000C79529 /* MyPlayground.playground */,
 			);
-			path = kanakunUITests;
-			sourceTree = "<group>";
-		};
-		69B3BEF124BB2FC700129249 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		69B3BEF324BB2FDF00129249 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				69B3BEF824BB2FDF00129249 /* Jisho.framework */,
-				69B3BEFA24BB2FDF00129249 /* JishoTests.xctest */,
-			);
-			name = Products;
+			path = Playgrounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,45 +224,30 @@
 			dependencies = (
 			);
 			name = kanakun;
+			packageProductDependencies = (
+				69E1BF3024C318AD00C79529 /* jisho-swift */,
+			);
 			productName = kanakun;
 			productReference = 69B3BEBB24BB2F8900129249 /* kanakun.app */;
 			productType = "com.apple.product-type.application";
 		};
-		69B3BED324BB2F8B00129249 /* kanakunTests */ = {
+		69E1BF4F24C499AE00C79529 /* kanakunTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69B3BEEB24BB2F8B00129249 /* Build configuration list for PBXNativeTarget "kanakunTests" */;
+			buildConfigurationList = 69E1BF5724C499AE00C79529 /* Build configuration list for PBXNativeTarget "kanakunTests" */;
 			buildPhases = (
-				69B3BED024BB2F8B00129249 /* Sources */,
-				69B3BED124BB2F8B00129249 /* Frameworks */,
-				69B3BED224BB2F8B00129249 /* Resources */,
+				69E1BF4C24C499AE00C79529 /* Sources */,
+				69E1BF4D24C499AE00C79529 /* Frameworks */,
+				69E1BF4E24C499AE00C79529 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				69B3BED624BB2F8B00129249 /* PBXTargetDependency */,
+				69E1BF5624C499AE00C79529 /* PBXTargetDependency */,
 			);
 			name = kanakunTests;
 			productName = kanakunTests;
-			productReference = 69B3BED424BB2F8B00129249 /* kanakunTests.xctest */;
+			productReference = 69E1BF5024C499AE00C79529 /* kanakunTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		69B3BEDE24BB2F8B00129249 /* kanakunUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 69B3BEEE24BB2F8B00129249 /* Build configuration list for PBXNativeTarget "kanakunUITests" */;
-			buildPhases = (
-				69B3BEDB24BB2F8B00129249 /* Sources */,
-				69B3BEDC24BB2F8B00129249 /* Frameworks */,
-				69B3BEDD24BB2F8B00129249 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				69B3BEE124BB2F8B00129249 /* PBXTargetDependency */,
-			);
-			name = kanakunUITests;
-			productName = kanakunUITests;
-			productReference = 69B3BEDF24BB2F8B00129249 /* kanakunUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -262,11 +261,7 @@
 					69B3BEBA24BB2F8900129249 = {
 						CreatedOnToolsVersion = 12.0;
 					};
-					69B3BED324BB2F8B00129249 = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 69B3BEBA24BB2F8900129249;
-					};
-					69B3BEDE24BB2F8B00129249 = {
+					69E1BF4F24C499AE00C79529 = {
 						CreatedOnToolsVersion = 12.0;
 						TestTargetID = 69B3BEBA24BB2F8900129249;
 					};
@@ -281,39 +276,18 @@
 				Base,
 			);
 			mainGroup = 69B3BEB224BB2F8900129249;
+			packageReferences = (
+				69E1BF2F24C318AD00C79529 /* XCRemoteSwiftPackageReference "jisho-swift" */,
+			);
 			productRefGroup = 69B3BEBC24BB2F8900129249 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 69B3BEF324BB2FDF00129249 /* Products */;
-					ProjectRef = 69B3BEF224BB2FDF00129249 /* Jisho.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				69B3BEBA24BB2F8900129249 /* kanakun */,
-				69B3BED324BB2F8B00129249 /* kanakunTests */,
-				69B3BEDE24BB2F8B00129249 /* kanakunUITests */,
+				69E1BF4F24C499AE00C79529 /* kanakunTests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		69B3BEF824BB2FDF00129249 /* Jisho.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Jisho.framework;
-			remoteRef = 69B3BEF724BB2FDF00129249 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		69B3BEFA24BB2FDF00129249 /* JishoTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = JishoTests.xctest;
-			remoteRef = 69B3BEF924BB2FDF00129249 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		69B3BEB924BB2F8900129249 /* Resources */ = {
@@ -326,14 +300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69B3BED224BB2F8B00129249 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		69B3BEDD24BB2F8B00129249 /* Resources */ = {
+		69E1BF4E24C499AE00C79529 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,43 +314,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69E1BF3824C34EFB00C79529 /* Array.swift in Sources */,
+				69E1BF4124C36CDC00C79529 /* String.swift in Sources */,
+				69E1BF3D24C356D700C79529 /* GamePad.swift in Sources */,
 				69B3BEC424BB2F8900129249 /* kanakun.xcdatamodeld in Sources */,
 				69964D3D24BB665B005772A8 /* Colors.swift in Sources */,
+				69E1BF2C24C3143F00C79529 /* GamePlayController.swift in Sources */,
 				69B3BEBF24BB2F8900129249 /* AppDelegate.swift in Sources */,
 				69B3BEC624BB2F8900129249 /* ContentView.swift in Sources */,
+				69E1BF3324C33D9000C79529 /* GameIndicator.swift in Sources */,
+				69964D4724BC4E6B005772A8 /* GameView.swift in Sources */,
 				69B3BEC124BB2F8900129249 /* SceneDelegate.swift in Sources */,
+				69E1BF5D24C4DC9C00C79529 /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69B3BED024BB2F8B00129249 /* Sources */ = {
+		69E1BF4C24C499AE00C79529 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69B3BED924BB2F8B00129249 /* kanakunTests.swift in Sources */,
-				69964D3E24BB665B005772A8 /* Colors.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		69B3BEDB24BB2F8B00129249 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				69B3BEE424BB2F8B00129249 /* kanakunUITests.swift in Sources */,
+				69E1BF5324C499AE00C79529 /* kanakunTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		69B3BED624BB2F8B00129249 /* PBXTargetDependency */ = {
+		69E1BF5624C499AE00C79529 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 69B3BEBA24BB2F8900129249 /* kanakun */;
-			targetProxy = 69B3BED524BB2F8B00129249 /* PBXContainerItemProxy */;
-		};
-		69B3BEE124BB2F8B00129249 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 69B3BEBA24BB2F8900129249 /* kanakun */;
-			targetProxy = 69B3BEE024BB2F8B00129249 /* PBXContainerItemProxy */;
+			targetProxy = 69E1BF5524C499AE00C79529 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -525,7 +485,7 @@
 				DEVELOPMENT_TEAM = 2SKBCUTH6B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = kanakun/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -547,7 +507,7 @@
 				DEVELOPMENT_TEAM = 2SKBCUTH6B;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = kanakun/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -559,10 +519,9 @@
 			};
 			name = Release;
 		};
-		69B3BEEC24BB2F8B00129249 /* Debug */ = {
+		69E1BF5824C499AE00C79529 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SKBCUTH6B;
@@ -581,10 +540,9 @@
 			};
 			name = Debug;
 		};
-		69B3BEED24BB2F8B00129249 /* Release */ = {
+		69E1BF5924C499AE00C79529 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SKBCUTH6B;
@@ -600,46 +558,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/kanakun.app/kanakun";
-			};
-			name = Release;
-		};
-		69B3BEEF24BB2F8B00129249 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2SKBCUTH6B;
-				INFOPLIST_FILE = kanakunUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.misfitcoders.kanakunUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = kanakun;
-			};
-			name = Debug;
-		};
-		69B3BEF024BB2F8B00129249 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2SKBCUTH6B;
-				INFOPLIST_FILE = kanakunUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.misfitcoders.kanakunUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = kanakun;
 			};
 			name = Release;
 		};
@@ -664,25 +582,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69B3BEEB24BB2F8B00129249 /* Build configuration list for PBXNativeTarget "kanakunTests" */ = {
+		69E1BF5724C499AE00C79529 /* Build configuration list for PBXNativeTarget "kanakunTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69B3BEEC24BB2F8B00129249 /* Debug */,
-				69B3BEED24BB2F8B00129249 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		69B3BEEE24BB2F8B00129249 /* Build configuration list for PBXNativeTarget "kanakunUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				69B3BEEF24BB2F8B00129249 /* Debug */,
-				69B3BEF024BB2F8B00129249 /* Release */,
+				69E1BF5824C499AE00C79529 /* Debug */,
+				69E1BF5924C499AE00C79529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		69E1BF2F24C318AD00C79529 /* XCRemoteSwiftPackageReference "jisho-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evelasko/jisho-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		69E1BF3024C318AD00C79529 /* jisho-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69E1BF2F24C318AD00C79529 /* XCRemoteSwiftPackageReference "jisho-swift" */;
+			productName = "jisho-swift";
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		69B3BEC224BB2F8900129249 /* kanakun.xcdatamodeld */ = {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Color {
+public extension Color {
     static let Astronaut = Color("Astronaut")
     static let CloudBurst = Color("CloudBurst")
     static let BonJour = Color("BonJour")
