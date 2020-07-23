@@ -8,67 +8,91 @@
 import SwiftUI
 import Combine
 import jisho_swift
+import wanakana_swift
 
 struct GameIndicator: View {
     
-    var content: [FuriganaEntry]
-    var cursor: (index: Int, character: Int)
+    var content: [EnumeratedToken]
+    var cursor: Int
     
-    func furiganaViewBlock(_ entry: FuriganaEntry) -> AnyView {
+    var chunkedContentBlocks: [[EnumeratedToken]] {
+        content.count <= 5
+            ? [content]
+            : content.chunked(into: 5)
+    }
+    
+    func kanaViewBlock(_ enumeratedToken: EnumeratedToken) -> AnyView {
         return AnyView(
             VStack{
-                Text(
-                    entry.original == entry.hiragana ||
-                    entry.original == entry.katakana
-                        ? "" // no furigana to show
-                        : entry.hiragana
-                )
-                    .font(.system(size: 18))
+                Text(enumeratedToken.viewIndicator)
+                    .font(.system(size: 43))
                     .fontWeight(.bold)
-                    .foregroundColor(.Astronaut)
-                Text(entry.original)
-                    .font(.system(size: 48))
-                    .fontWeight(.bold)
-                    .foregroundColor(.Astronaut)
+                    .foregroundColor(enumeratedToken.index > cursor
+                                        ? .Astronaut
+                                        : .BonJour
+                    )
+                    .padding(.all, 4)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(
+                                Color.Astronaut,
+                                lineWidth: enumeratedToken.index == cursor
+                                    ? 3
+                                    : 0
+                            )
+                    )
             }
         )
     }
     
     var body: some View {
-        GeometryReader {geometry in
-            VStack {
-                ForEach(content.chunked(into: 6), id: \.self) { row in
-                    HStack {
-                        ForEach(row, id: \.self)
-                        { entry in furiganaViewBlock(entry) }
+        GeometryReader { geometry in
+                VStack {
+                    ForEach(chunkedContentBlocks, id: \.self) { row in
+                        HStack(
+                            alignment: VerticalAlignment.bottom,
+                            spacing: 5,
+                            content: {
+                                ForEach(row, id: \.self)
+                                    { kanaViewBlock($0) }
+                            }
+                        )
                     }
                 }
+                .padding(.all, 20)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(
+                            colors: [
+                                Color.PersianPink,
+                                Color.FrenchRose
+                            ]
+                        ),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .cornerRadius(13.0)
+                .frame(width: geometry.size.width)
+
         }
-        .frame(
-            width: geometry.size.width - 40,
-            height: ((geometry.size.width - 20)/4)*2,
-            alignment: .center
-        )
-        .background(
-            LinearGradient(
-                gradient: Gradient(
-                    colors: [
-                        Color.PersianPink,
-                        Color.FrenchRose]
-                ),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        )
-        .cornerRadius(13.0)}
+        .frame(height: CGFloat(73 * chunkedContentBlocks.count))
     }
 }
 
-//struct GameIndicator_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GameIndicator(content: [
-//        FuriganaEntry(original: "私", hiragana: "わたし", katakana: "ワタシ", romaji: "watashi"),
-//
-//        ])
-//    }
-//}
+struct GameIndicator_Previews: PreviewProvider {
+    static var previews: some View {
+        GameIndicator(content:
+                        "てんもうかいかいそにしてもらさ"
+                        .tokenizedAll
+                        .enumerated()
+                        .map {
+                            EnumeratedToken(
+                                index: $0.offset,
+                                token: $0.element,
+                                mode: GameViewMode.Roma_Kata
+                            )
+                        }
+            , cursor: 0)
+    }
+}

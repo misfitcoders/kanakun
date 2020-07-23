@@ -8,6 +8,7 @@
 import XCTest
 @testable import kanakun
 import jisho_swift
+import wanakana_swift
 import Combine
 
 class kanakunTests: XCTestCase {
@@ -16,45 +17,49 @@ class kanakunTests: XCTestCase {
 
     func testGameControler_Singleton() {
         let gamePlayControllerB = GamePlayController.game
-        gamePlayController.cursor.character = 1
-        XCTAssertTrue( gamePlayController.cursor.character == gamePlayControllerB.cursor.character)
+        gamePlayController.cursor = 1
+        XCTAssertTrue( gamePlayController.cursor == gamePlayControllerB.cursor)
         gamePlayController.resetGame()
-        XCTAssertTrue( gamePlayController.cursor.character == gamePlayControllerB.cursor.character)
+        XCTAssertTrue( gamePlayController.cursor == gamePlayControllerB.cursor)
     }
     
     func testGameControler_StartGameWith() {
         let expectation = XCTestExpectation(
             description: "fetch proverbs from Jisho and Furigana for first item in results"
         )
-        var gameContent = [FuriganaEntry]()
+        var gameContent = [Tokenized]()
         guard let result = try? Jisho.searchFor(
                 term: .Proverb, page: 1) else {
             XCTFail()
             return
         }
         
-        var cancellableFurigana: AnyCancellable?
         let cancellableJisho = result.sink(
             receiveCompletion: { print($0) }) { jishoResult in
-            guard let furiganaResult = try?  Jisho.getFurigana(forJishoEntry: jishoResult.data.first!) else {
+            guard let content = jishoResult.data.first?.japanese.first?.reading?.tokenizedAll
+            else {
                 XCTFail()
                 return
             }
-            cancellableFurigana = furiganaResult.sink(
-                receiveCompletion: { print($0) },
-                receiveValue: { furiganaEntry in
-                    gameContent = furiganaEntry.furigana
-                    expectation.fulfill()
-                })
+            gameContent = content
+            expectation.fulfill()
         }
+            
         wait(for: [expectation], timeout: 20)
-        XCTAssertNotNil(cancellableFurigana)
         XCTAssertNotNil(cancellableJisho)
         XCTAssertFalse(gameContent.isEmpty)
         
         // Initialize Game
         XCTContext.runActivity(named: "initialize game") { _ in
+            let expectation = XCTestExpectation(
+                description: "initialize game in main thread"
+            )
             gamePlayController.startGameWith(content: gameContent)
+            let cancellable = gamePlayController.content.publisher.sink { _ in
+                expectation.fulfill()
+            }
+            XCTAssertNotNil(cancellable)
+            wait(for: [expectation], timeout: 5)
             XCTAssertFalse(gamePlayController.content.isEmpty)
             XCTAssertGreaterThan(gamePlayController.allCharacters.count, 1)
         }
@@ -68,8 +73,8 @@ class kanakunTests: XCTestCase {
         // Pass failures thru the game
         XCTContext.runActivity(named: "pass failures thru game") {_ in
             let characters = gamePlayController.allCharacters
-            characters.reversed().forEach { character in
-                gamePlayController.checkAnswer(forInput: String(character))
+            characters.reversed().forEach { string in
+                gamePlayController.checkAnswer(string)
             }
             XCTAssertEqual(gamePlayController.failed, characters.count - 1)
         }
@@ -77,8 +82,8 @@ class kanakunTests: XCTestCase {
         // Pass succesfully thru the game
         XCTContext.runActivity(named: "pass successfully thru game") {_ in
             let characters = gamePlayController.allCharacters
-            characters.forEach { character in
-                gamePlayController.checkAnswer(forInput: String(character))
+            characters.forEach { string in
+                gamePlayController.checkAnswer(string)
             }
             XCTAssertTrue(gamePlayController.success)
         }

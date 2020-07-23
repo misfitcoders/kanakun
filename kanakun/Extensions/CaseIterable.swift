@@ -1,9 +1,11 @@
-enum Mode: CaseIterable {
-    case one
-    case two
-    case three
-    case four
-}
+//
+//  CaseIterable.swift
+//  kanakun
+//
+//  Created by Enrique Perez Velasco on 23/07/2020.
+//
+
+import Foundation
 
 extension CaseIterable where Self: Equatable {
     func next() -> Self {
@@ -13,11 +15,3 @@ extension CaseIterable where Self: Equatable {
         return all[next == all.endIndex ? all.startIndex : next]
     }
 }
-
-func nextMode(of from: Mode) -> Mode {
-    from.next()
-}
-
-print(nextMode(of: .one))
-print(nextMode(of: .three))
-print(nextMode(of: .four))

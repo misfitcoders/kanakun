@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import Combine
+import jisho_swift
+import wanakana_swift
 
 struct ContentView: View {
+    
+    var gameContent = GameContentController()
     
     var body: some View {
         ZStack {
@@ -62,6 +67,7 @@ struct ContentView: View {
         }
             
         }
+        .environmentObject(gameContent)
     }
 }
 

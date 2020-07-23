@@ -7,9 +7,13 @@
 
 import SwiftUI
 import Combine
+import jisho_swift
 
 struct GameView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var gameContent: GameContentController
+    
     @State var progressValue: Float = 0.4
 
     @ObservedObject var gamePlay = GamePlayController.game
@@ -24,12 +28,24 @@ struct GameView: View {
                         .padding(30)
                 }
             }
+            Button(action: {
+                gamePlay.toggleMode()
+            }) {
+                ZStack {
+                    Image(systemName: "arrow.right.arrow.left.circle.fill")
+                        .font(.title)
+                        .foregroundColor(.Astronaut)
+                        .padding(30)
+                }
+            }
             Spacer()
             Image(systemName: "\(gamePlay.failed).circle.fill")
                 .font(Font.system(.largeTitle).bold())
-                .foregroundColor(.FrenchRose)
+                .foregroundColor(.PersianPink)
             Spacer()
-            Button(action: {}) {
+            Button(action: {
+                gameContent.next()
+            }) {
                 ZStack {
                     Image(systemName: "arrowshape.bounce.right.fill")
                         .font(.title)
@@ -51,11 +67,12 @@ struct GameView: View {
                 .foregroundColor(.white)
         }
     }
-    
+
     @ViewBuilder
     var body: some View {
-        if gamePlay.content.isEmpty {
-            Text("Loading")
+        if gamePlay.content.isEmpty || gamePlay.success {
+           VStack { Text("Loading content") }
+            .onAppear { gameContent.next() }
         }
         else {
             GeometryReader { geometry in
@@ -73,21 +90,47 @@ struct GameView: View {
                         btnBack
                         Spacer()
                         GameIndicator(
-                            content: gamePlay.content,
+                            content: gamePlay
+                                .content
+                                .enumerated()
+                                .map {
+                                    EnumeratedToken(
+                                        index: $0.offset,
+                                        token: $0.element,
+                                        mode: gamePlay.mode
+                                    )
+                                },
                             cursor: gamePlay.cursor
                         )
                         Spacer()
-                        GamePad()
-                        TimerBar(value: $progressValue)
-                            .frame(height: 5)
-                            .padding(.horizontal, 20)
-                        Spacer()
+                        GamePad(
+                            padItems: gamePlay
+                                .padItems
+                                .enumerated()
+                                .map {
+                                    EnumeratedToken(
+                                        index: $0.offset,
+                                        token: $0.element,
+                                        mode: gamePlay.mode
+                                    )
+                                },
+                            checkAnswer: gamePlay.checkAnswer)
+                            .frame(
+                                width: geometry.size.width,
+                                height: geometry.size.width,
+                                alignment: .center)
+                         Spacer()
+
+//                        TimerBar(value: $progressValue)
+//                            .frame(height: 5)
+//                            .padding(.horizontal, 20)
+
                         //MARK: - Bottom Toolbar
                         bottomBar
                     }
+                    .edgesIgnoringSafeArea(.bottom)
                 }
             }
-            
         }
     }
 }
@@ -121,6 +164,9 @@ struct TimerBar: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        GameView().onAppear {
+            let game = GamePlayController.game
+            game.startGameWith(content: "ていすかんなにまく".tokenizedAll)
+        }
     }
 }

@@ -8,16 +8,7 @@
 import Foundation
 import Combine
 import jisho_swift
-
-enum GameMode {
-    case Hira_Kata
-    case Hira_Roma
-    case Kata_Hira
-    case Kata_Roma
-    case Roma_Hira
-    case Roma_Kata
-}
-
+import wanakana_swift
 
 final class GamePlayController: ObservableObject {
     
@@ -25,69 +16,78 @@ final class GamePlayController: ObservableObject {
     static let game = GamePlayController()
     
     
-    @Published var content = [FuriganaEntry]()
-    @Published var cursor = (index: 0, character: 0)
-    @Published var mode: GameMode = GameMode.Hira_Kata
+    @Published var content = [Tokenized]()
+    @Published var cursor = 0
+    @Published var mode: GameViewMode = GameViewMode.Hira_Roma
     /// Returns true if player has succeeded and the game has ended
     @Published var success: Bool = false
     /// Returns the count of failed attempts in the current game
     @Published var failed: Int = 0
-    @Published var padItems = [Character]()
-
-    /// The current content item in play
-    var current: FuriganaEntry? {
-        if content.isEmpty { return nil }
-        else { return content[cursor.index] }
-    }
-
-    /// The current character in play
-    var currentCharacter: Character? {
-        current?.hiragana[cursor.character]
-    }
+    @Published var padItems = [Tokenized]()
     
-    /// All characters in play
-    var allCharacters: String {
-        if content.isEmpty { return "" }
-        return content.reduce(into: "") { result, entry in
-            result += entry.hiragana
+    /// The current content item in play
+    var current: Tokenized? {
+        if content.isEmpty { return nil }
+        else { return content[cursor] }
+    }
+
+    /// The current character in play (in hiragana)
+//    var currentCharacter: String? {
+//        current?.hiragana
+//    }
+    
+    /// All characters in playing content
+    var allCharacters: [String] {
+        if content.isEmpty { return [] }
+        return content.reduce(into: [String]()) { result, entry in
+            result.append(entry.hiragana)
         }
     }
+    
+    /// All cancelables generated to start a new game
+    var cancellables = [AnyCancellable]()
 
     /// Computes the game pad array for the given content
-    func generatePadItems(slots: Int = 25) -> [Character] {
+    /// - Parameter slots: how many items the pad must have (default: 25)
+    /// - Returns: An array the length specified in **slots** of tokenized kana and romaji
+    func generatePadItems(slots: Int = 25) -> [Tokenized] {
         if content.isEmpty { return [] }
         var uniques = allCharacters.uniques
         if uniques.count > slots { return [] }
         var counter = 0
         while uniques.count < slots {
-            if !uniques.contains(allHiragana[counter]) {
-                uniques.append(allHiragana[counter])
+            if !uniques.contains(String(allHiragana[counter])) {
+                uniques.append(String(allHiragana[counter]))
             } else {
                 counter += 1
             }
         }
         return uniques
+            .shuffled()
+            .reduce(into: "") { $0 += $1 }
+            .tokenizedAll
     }
-    
-    /// Checks the input against the current furigana item
-    func checkAnswer(forInput input: String) {
+
+    /// Checks the input against the current item in play (in Hiragana)
+    /// - Parameter input: The string to check against for (checks are performed in Hiragana only)
+    func checkAnswer(_ input: String) {
         if current == nil { return }
-        if input.first == currentCharacter { next() }
+        if input == current?.hiragana { next() }
         else { failed += 1 }
     }
     
     /// Move cursor to next step. If last, set the game as done
     func next() {
-        if cursor.character + 1 >= current!.hiragana.count {
-            // reset character
-            cursor.character = 0
+        if cursor + 1 >= content.count {
             // set the game done if this was the last character
-            if cursor.index + 1 >= content.count { success = true }
-            // move index to the next content item
-            else { cursor.index += 1 }
+             success = true
         }
         // move cursor to the next character in index
-        else { cursor.character += 1 }
+        else { cursor += 1 }
+    }
+    
+    func toggleMode() {
+        mode = mode.next()
     }
     
     /// Clears the game to nothing
@@ -98,17 +98,22 @@ final class GamePlayController: ObservableObject {
     
     /// Restarts the game with the currently available content
     func resetGame() {
-        cursor.index = 0
-        cursor.character = 0
-        failed = 0
-        success = false
-        padItems = []
-        padItems = generatePadItems()
+        DispatchQueue.main.async {
+            self.cursor = 0
+            self.failed = 0
+            self.success = false
+            self.padItems = []
+            self.padItems = self.generatePadItems()
+        }
     }
     
-    func startGameWith(content data: [FuriganaEntry]) {
-        content = data
-        resetGame()
+    /// Starts a new game with the tokenized received data
+    func startGameWith(content data: [Tokenized]) {
+        DispatchQueue.main.async {
+            self.content = data
+            self.resetGame()
+            self.cancellables = []
+        }
     }
     
 }
