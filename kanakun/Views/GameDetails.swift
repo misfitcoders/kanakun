@@ -33,20 +33,21 @@ struct GameDetails: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    Button(action: { self.isPresented.toggle() }, label: {
-                        Image(systemName: "multiply.circle")
-                            .foregroundColor(.Astronaut)
-                            .padding(.top, 20)
-                    })
+//                    Button(action: { self.isPresented.toggle() }, label: {
+//                        Image(systemName: "multiply.circle")
+//                            .foregroundColor(.Astronaut)
+//                            .padding(.top, 20)
+//                    })
                     Spacer()
                     Text(slug)
+                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .font(.largeTitle)
                         .padding(.all, 20)
                     
                     Text(reading)
                         .multilineTextAlignment(.center)
-                        .font(.title3)
+                        .font(.subheadline)
                         .padding(.bottom, 40)
                         .padding(.horizontal, 20)
                     Spacer()

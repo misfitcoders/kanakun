@@ -12,9 +12,9 @@ struct FeedbackView: View {
         VStack(spacing: 30) {
             Spacer()
         Text("Welcome to KanaKun")
-            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            .font(.largeTitle)
         Text("An app to practice identifying japanese kanas")
-            .font(.title2)
+            .font(.title)
         Text(
 """
 In the framed text box you will see the characters to identify along with an indicator that shows the current character to identify. Right below there is a collection of buttons for which to tap the correct character.

@@ -34,7 +34,7 @@ struct GameView: View {
                     .font(.title)
                     //.aspectRatio(contentMode: .fit)
                     .foregroundColor(.Astronaut)
-                    .padding(15)
+                    .padding(.leading, 20)
             }
             Spacer()
             Button( action: {
@@ -63,7 +63,7 @@ struct GameView: View {
             Button( action: {
                 gamePlay.toggleMode()
             }) {
-                Image(systemName: "arrow.right.arrow.left.circle.fill")
+                Image(systemName: "arrow.up.arrow.down.circle.fill")
                     .font(.title)
                     .foregroundColor(.Astronaut)
                     //.padding(30)
@@ -72,10 +72,10 @@ struct GameView: View {
             Button( action: {
                 newGame()
             }) {
-                Image(systemName: "arrowshape.bounce.right.fill")
+                Image(systemName: "arrow.right.circle.fill")
                     .font(.title)
                     .foregroundColor(.Astronaut)
-                    .padding(15)
+                    .padding(.trailing, 20)
             }
         }
     }
@@ -87,7 +87,8 @@ struct GameView: View {
             .onAppear { newGame() }
         }
         else {
-            GeometryReader { geometry in
+           NavigationView {
+                GeometryReader { geometry in
                 ZStack{
                     LinearGradient(
                         gradient: Gradient(
@@ -136,10 +137,15 @@ struct GameView: View {
 //                            .padding(.horizontal, 20)
 
                         bottomBar
-                            .padding(.vertical, 30)
+                            .padding(.vertical, 40)
+                        
                     }
                     .edgesIgnoringSafeArea(.bottom)
                 }
+            }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
             }
         }
     }

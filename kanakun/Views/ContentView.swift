@@ -36,7 +36,9 @@ struct ContentView: View {
                             }
                         }
                     )
+                    .navigationBarTitle("")
                     .navigationBarHidden(true)
+                    .navigationBarBackButtonHidden(true)
                     Spacer()
                     Button( action: {
                         self.showingFeedback.toggle()
@@ -50,8 +52,9 @@ struct ContentView: View {
                     Spacer()
                 }
             }
-        
-            
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

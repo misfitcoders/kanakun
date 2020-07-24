@@ -51,7 +51,6 @@ class GameContentController: ObservableObject {
                     "played" : played ?? content!.played
                 ])
                 try context.save()
-                print("saved object with id: \(content!.objectID)")
             } catch {
                 print("An error occurred while updating current content \(error.localizedDescription)")
             }
