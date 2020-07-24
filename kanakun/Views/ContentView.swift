@@ -11,63 +11,48 @@ import jisho_swift
 import wanakana_swift
 
 struct ContentView: View {
-    
-    var gameContent = GameContentController()
+    @State var showingFeedback = false
     
     var body: some View {
         ZStack {
             NavigationView {
-            VStack {
-                Spacer()
-                Image("logo")
-                    .resizable()
-                    .frame(width: 300, height: 300)
-                Spacer()
-                NavigationLink(
-                destination:
-                    GameView()
-                    .navigationBarHidden(true),
-                label: {
-                    ZStack{
-                        Capsule()
-                            .fill(Color.Astronaut)
-                            .frame(width: 300, height: 50, alignment: .center)
-                        Text("Words")
-                            .foregroundColor(.white)
+                VStack {
+                    Spacer()
+                    Image("logo")
+                        .resizable()
+                        .frame(width: 300, height: 300)
+                    Spacer()
+                    NavigationLink(
+                        destination:
+                            GameView()
+                            .navigationBarHidden(true),
+                        label: {
+                            ZStack{
+                                Capsule()
+                                    .fill(Color.Astronaut)
+                                    .frame(width: 300, height: 50, alignment: .center)
+                                Text("Practice")
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    )
+                    .navigationBarHidden(true)
+                    Spacer()
+                    Button( action: {
+                        self.showingFeedback.toggle()
+                    }) {
+                        Image(systemName: "questionmark.diamond.fill")
+                            .font(.title)
+                            .foregroundColor(.Astronaut)
+                    }.sheet(isPresented: $showingFeedback) {
+                       FeedbackView()
                     }
+                    Spacer()
                 }
-            )
-            .navigationBarHidden(true)
-                NavigationLink(
-                destination:
-                    GameView()
-                    .navigationBarHidden(true),
-                label: {
-                    ZStack{
-                        Capsule()
-                            .fill(Color.Astronaut)
-                            .frame(width: 300, height: 50, alignment: .center)
-                        Text("Proverbs")
-                            .foregroundColor(.white)
-                    }
-                }
-            )
-                Spacer()
-                NavigationLink(
-                destination:
-                    GameView()
-                    .navigationBarHidden(true),
-                label: {
-                    Image(systemName: "gearshape.fill")
-                        .font(.largeTitle)
-                }
-            )
-                Spacer()
             }
-        }
+        
             
         }
-        .environmentObject(gameContent)
     }
 }
 

@@ -7,11 +7,16 @@
 
 import Foundation
 
-enum GameViewMode: CaseIterable {
+public enum GameViewMode: CaseIterable {
     case Hira_Kata
     case Hira_Roma
     case Kata_Hira
     case Kata_Roma
     case Roma_Hira
     case Roma_Kata
+}
+
+public enum GameContentMode {
+    case available
+    case failed
 }

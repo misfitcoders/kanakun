@@ -16,16 +16,36 @@ struct GameIndicator: View {
     var cursor: Int
     
     var chunkedContentBlocks: [[EnumeratedToken]] {
-        content.count <= 5
-            ? [content]
-            : content.chunked(into: 5)
+        switch content.count {
+            case ..<5: return [content]
+            case 6...15: return content.chunked(into: 5)
+            case 15...: return content.chunked(into: 7)
+            default: return content.chunked(into: 7)
+        }
+
+    }
+    
+    var fontSize: CGFloat {
+        switch chunkedContentBlocks.count {
+            case 3...4: return 34
+            case 4...: return 24
+            default: return 40
+        }
+    }
+    
+    var heightSize: CGFloat {
+        switch chunkedContentBlocks.count {
+            case 1...3: return CGFloat(chunkedContentBlocks.count * 67)
+            case 4... : return CGFloat(chunkedContentBlocks.count * 60)
+            default   : return CGFloat(chunkedContentBlocks.count * 63)
+        }
     }
     
     func kanaViewBlock(_ enumeratedToken: EnumeratedToken) -> AnyView {
         return AnyView(
             VStack{
                 Text(enumeratedToken.viewIndicator)
-                    .font(.system(size: 43))
+                    .font(.system( size: fontSize ))
                     .fontWeight(.bold)
                     .foregroundColor(enumeratedToken.index > cursor
                                         ? .Astronaut
@@ -76,23 +96,55 @@ struct GameIndicator: View {
                 .frame(width: geometry.size.width)
 
         }
-        .frame(height: CGFloat(73 * chunkedContentBlocks.count))
+        .frame(height: CGFloat(heightSize))
     }
 }
 
 struct GameIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        GameIndicator(content:
-                        "てんもうかいかいそにしてもらさ"
-                        .tokenizedAll
-                        .enumerated()
-                        .map {
-                            EnumeratedToken(
-                                index: $0.offset,
-                                token: $0.element,
-                                mode: GameViewMode.Roma_Kata
-                            )
-                        }
-            , cursor: 0)
+        Group {
+            GameIndicator(content:
+                            "てんもうかいかいそにしてもらさ"
+                            .tokenizedAll
+                            .enumerated()
+                            .map {
+                                EnumeratedToken(
+                                    index: $0.offset,
+                                    token: $0.element,
+                                    mode: GameViewMode.Roma_Kata
+                                )
+                            }
+                          , cursor: 0)
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .previewDisplayName("Regular Entry")
+            GameIndicator(content:
+                            "てんもうかいかいそにしてもらさかんな"
+                            .tokenizedAll
+                            .enumerated()
+                            .map {
+                                EnumeratedToken(
+                                    index: $0.offset,
+                                    token: $0.element,
+                                    mode: GameViewMode.Roma_Kata
+                                )
+                            }
+                          , cursor: 0)
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .previewDisplayName("Overflown 1 (3...4)")
+            GameIndicator(content:
+                            "てんもうかいかいそにしてもらさかんなちとしはきくまつさ"
+                            .tokenizedAll
+                            .enumerated()
+                            .map {
+                                EnumeratedToken(
+                                    index: $0.offset,
+                                    token: $0.element,
+                                    mode: GameViewMode.Roma_Kata
+                                )
+                            }
+                          , cursor: 0)
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .previewDisplayName("Overflown 1 (4...)")
+        }
     }
 }

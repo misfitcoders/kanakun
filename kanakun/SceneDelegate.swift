@@ -20,12 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 
+        let contentController = GameContentController(context)
+        
         let contentView = ContentView().environment(\.managedObjectContext, context)
-
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController(
+                rootView: contentView
+                          .environmentObject(contentController)
+            )
             self.window = window
             window.makeKeyAndVisible()
         }

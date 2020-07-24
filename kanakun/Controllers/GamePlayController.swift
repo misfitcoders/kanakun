@@ -15,7 +15,6 @@ final class GamePlayController: ObservableObject {
     private init() { }
     static let game = GamePlayController()
     
-    
     @Published var content = [Tokenized]()
     @Published var cursor = 0
     @Published var mode: GameViewMode = GameViewMode.Hira_Roma
@@ -31,28 +30,15 @@ final class GamePlayController: ObservableObject {
         else { return content[cursor] }
     }
 
-    /// The current character in play (in hiragana)
-//    var currentCharacter: String? {
-//        current?.hiragana
-//    }
-    
-    /// All characters in playing content
-    var allCharacters: [String] {
-        if content.isEmpty { return [] }
-        return content.reduce(into: [String]()) { result, entry in
-            result.append(entry.hiragana)
-        }
-    }
-    
-    /// All cancelables generated to start a new game
-    var cancellables = [AnyCancellable]()
-
     /// Computes the game pad array for the given content
     /// - Parameter slots: how many items the pad must have (default: 25)
     /// - Returns: An array the length specified in **slots** of tokenized kana and romaji
     func generatePadItems(slots: Int = 25) -> [Tokenized] {
         if content.isEmpty { return [] }
-        var uniques = allCharacters.uniques
+        var uniques = content
+            .reduce(into: [String]())
+                {result, entry in result.append(entry.hiragana)}
+            .uniques
         if uniques.count > slots { return [] }
         var counter = 0
         while uniques.count < slots {
@@ -108,11 +94,11 @@ final class GamePlayController: ObservableObject {
     }
     
     /// Starts a new game with the tokenized received data
-    func startGameWith(content data: [Tokenized]) {
+    func startGameWith(content data: Play?) {
+        guard let play = data else {fatalError("No content to play")}
         DispatchQueue.main.async {
-            self.content = data
+            self.content = play.content!.tokenizedAll
             self.resetGame()
-            self.cancellables = []
         }
     }
     
