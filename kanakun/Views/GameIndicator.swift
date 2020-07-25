@@ -68,13 +68,13 @@ struct GameIndicator: View {
     var body: some View {
         GeometryReader { geometry in
                 VStack {
-                    ForEach(chunkedContentBlocks, id: \.self) { row in
+                    ForEach(self.chunkedContentBlocks, id: \.self) { row in
                         HStack(
                             alignment: VerticalAlignment.bottom,
                             spacing: 5,
                             content: {
                                 ForEach(row, id: \.self)
-                                    { kanaViewBlock($0) }
+                                { self.kanaViewBlock($0) }
                             }
                         )
                     }

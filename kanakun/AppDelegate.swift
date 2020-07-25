@@ -97,49 +97,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 else { return }
                             
                 let cancellableID = UUID()
-                let cancellable = request.sink { print($0) }
-                    receiveValue: { jishoResult in
-                        backgroundContext.perform {
-                            do {
-                                jishoResult.data.forEach { entry in
-                                    
-                                    guard let content = entry
-                                            .japanese
-                                            .first!
-                                            .reading
-                                    else { return }
-                                    
-                                    guard let senses = entry
-                                            .senses
-                                            .first?
-                                            .englishDefinitions
-                                            .reduce(into: "", {
-                                                accumulator, definition in
-                                                accumulator += "\(definition)\n"
-                                            })
-                                    else { return }
+                
+                let cancellable = request.sink(
+                receiveCompletion: { print($0) }) { jishoResult in
+                    backgroundContext.perform {
+                        do {
+                            jishoResult.data.forEach { entry in
+                                
+                                guard let content = entry
+                                        .japanese
+                                        .first!
+                                        .reading
+                                else { return }
+                                
+                                guard let senses = entry
+                                        .senses
+                                        .first?
+                                        .englishDefinitions
+                                        .reduce(into: "", {
+                                            accumulator, definition in
+                                            accumulator += "\(definition)\n"
+                                        })
+                                else { return }
 
-                                    let playEntry = Play(context: backgroundContext)
-                                    playEntry.content = content
-                                    playEntry.page = 1
-                                    playEntry.played = false
-                                    playEntry.term = JishoSearchTerm.Proverb.rawValue
-                                    playEntry.senses = senses
-                                    playEntry.slug = entry.slug
-                                }
-                                try backgroundContext.save()
-                                userDefaults.setValue(
-                                    true,
-                                    forKey: preloadedDataKey
-                                )
-                            } catch { print(error.localizedDescription) }
-                        }
-                        
-                        // Pop cancellable
-                        if let cancellableIndex = allCancellables.firstIndex(where: { $0.id == cancellableID }) {
-                            allCancellables.remove(at: cancellableIndex)
-                        }
+                                let playEntry = Play(context: backgroundContext)
+                                playEntry.content = content
+                                playEntry.page = 1
+                                playEntry.played = false
+                                playEntry.term = JishoSearchTerm.Proverb.rawValue
+                                playEntry.senses = senses
+                                playEntry.slug = entry.slug
+                            }
+                            try backgroundContext.save()
+                            userDefaults.setValue(
+                                true,
+                                forKey: preloadedDataKey
+                            )
+                        } catch { print(error.localizedDescription) }
                     }
+                    
+                    // Pop cancellable
+                    if let cancellableIndex = allCancellables.firstIndex(where: { $0.id == cancellableID }) {
+                        allCancellables.remove(at: cancellableIndex)
+                    }
+                }
+                
                 allCancellables.append((
                     id: cancellableID,
                     cancellable: cancellable

@@ -38,7 +38,7 @@ struct GameView: View {
             }
             Spacer()
             Button( action: {
-                if gameContent.content != nil {
+                if self.gameContent.content != nil {
                     self.showingDetail.toggle()
                 }
             }) {
@@ -48,10 +48,10 @@ struct GameView: View {
                     //.padding(30)
             }.sheet(isPresented: $showingDetail) {
                 GameDetails(
-                    slug: gameContent.content?.slug ?? "...",
-                    reading: gameContent.content?.content ?? "...",
-                    senses: gameContent.content?.senses ?? "...",
-                    isPresented: $showingDetail
+                    slug: self.gameContent.content?.slug ?? "...",
+                    reading: self.gameContent.content?.content ?? "...",
+                    senses: self.gameContent.content?.senses ?? "...",
+                    isPresented: self.$showingDetail
                 ).background(Color.gray.opacity(0.5))
             }
             Spacer()
@@ -61,7 +61,7 @@ struct GameView: View {
                         
             Spacer()
             Button( action: {
-                gamePlay.toggleMode()
+                self.gamePlay.toggleMode()
             }) {
                 Image(systemName: "arrow.up.arrow.down.circle.fill")
                     .font(.title)
@@ -70,7 +70,7 @@ struct GameView: View {
             }
             Spacer()
             Button( action: {
-                newGame()
+                self.newGame()
             }) {
                 Image(systemName: "arrow.right.circle.fill")
                     .font(.title)
@@ -84,7 +84,7 @@ struct GameView: View {
     var body: some View {
         if gamePlay.content.isEmpty || gamePlay.success {
            VStack { Text("Loading content") }
-            .onAppear { newGame() }
+            .onAppear { self.newGame() }
         }
         else {
            NavigationView {
@@ -102,31 +102,31 @@ struct GameView: View {
                     VStack{
                         Spacer()
                         GameIndicator(
-                            content: gamePlay
+                            content: self.gamePlay
                                 .content
                                 .enumerated()
                                 .map {
                                     EnumeratedToken(
                                         index: $0.offset,
                                         token: $0.element,
-                                        mode: gamePlay.mode
+                                        mode: self.gamePlay.mode
                                     )
                                 },
-                            cursor: gamePlay.cursor
+                            cursor: self.gamePlay.cursor
                         )
                         Spacer()
                         GamePad(
-                            padItems: gamePlay
+                            padItems: self.gamePlay
                                 .padItems
                                 .enumerated()
                                 .map {
                                     EnumeratedToken(
                                         index: $0.offset,
                                         token: $0.element,
-                                        mode: gamePlay.mode
+                                        mode: self.gamePlay.mode
                                     )
                                 },
-                            checkAnswer: gamePlay.checkAnswer)
+                            checkAnswer: self.gamePlay.checkAnswer)
                             .frame(
                                 width: geometry.size.width,
                                 height: geometry.size.width,
@@ -136,7 +136,7 @@ struct GameView: View {
 //                            .frame(height: 5)
 //                            .padding(.horizontal, 20)
 
-                        bottomBar
+                        self.bottomBar
                             .padding(.vertical, 40)
                         
                     }

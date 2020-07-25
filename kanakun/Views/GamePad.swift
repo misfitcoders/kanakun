@@ -17,11 +17,11 @@ struct GamePad: View {
     
     var body: some View {
         GeometryReader { geometry in VStack {
-            ForEach(padItems.chunked(into: 5), id: \.self) { padRow in
+            ForEach(self.padItems.chunked(into: 5), id: \.self) { padRow in
                 HStack {
                     ForEach(padRow, id: \.self) { item in
                         Button(
-                            action: { checkAnswer(item.token.hiragana) }
+                            action: { self.checkAnswer(item.token.hiragana) }
                         ) {
                             Text(String(item.viewGamePad))
                                 .font(.system(size: 30))
