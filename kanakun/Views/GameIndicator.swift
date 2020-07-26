@@ -15,6 +15,9 @@ struct GameIndicator: View {
     var content: [EnumeratedToken]
     var cursor: Int
     
+    var previousFailure = 0
+    var failure: Int
+    
     var chunkedContentBlocks: [[EnumeratedToken]] {
         switch content.count {
             case ..<5: return [content]
@@ -48,19 +51,19 @@ struct GameIndicator: View {
                     .font(.system( size: fontSize ))
                     .fontWeight(.bold)
                     .foregroundColor(enumeratedToken.index > cursor
-                                        ? .Astronaut
-                                        : .BonJour
+                                        ? .LightSlateGrey
+                        :  enumeratedToken.index == cursor && self.previousFailure < failure ? .red : .Madison
                     )
                     .padding(.all, 4)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .stroke(
-                                Color.Astronaut,
-                                lineWidth: enumeratedToken.index == cursor
-                                    ? 3
-                                    : 0
-                            )
-                    )
+//                    .overlay(
+//                        Rectangle()
+//                            .fill(Color.white.opacity(0))
+//                            .border(width: 2, edge: .bottom, color: Color.Geyser.opacity(enumeratedToken.index == cursor ? 0.7 : 0))
+//
+//                        .shadow(color: .white, radius: 4, x: -2, y: -2)
+//                        .shadow(color: .Manatee, radius: 4, x: 2, y: 2)
+//                    )
+               
             }
         )
     }
@@ -80,20 +83,6 @@ struct GameIndicator: View {
                     }
                 }
                 .padding(.all, 20)
-                .background(
-                    LinearGradient(
-                        gradient: Gradient(
-                            colors: [
-                                Color.PersianPink,
-                                Color.FrenchRose
-                            ]
-                        ),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .cornerRadius(13.0)
-                .frame(width: geometry.size.width)
 
         }
         .frame(height: CGFloat(heightSize))
@@ -111,10 +100,10 @@ struct GameIndicator_Previews: PreviewProvider {
                                 EnumeratedToken(
                                     index: $0.offset,
                                     token: $0.element,
-                                    mode: GameViewMode.Roma_Kata
+                                    mode: GameViewMode.Kata_Roma
                                 )
                             }
-                          , cursor: 0)
+                , cursor: 0, failure: 0)
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .previewDisplayName("Regular Entry")
             GameIndicator(content:
@@ -125,10 +114,10 @@ struct GameIndicator_Previews: PreviewProvider {
                                 EnumeratedToken(
                                     index: $0.offset,
                                     token: $0.element,
-                                    mode: GameViewMode.Roma_Kata
+                                    mode: GameViewMode.Hira_Roma
                                 )
                             }
-                          , cursor: 0)
+                , cursor: 5, failure: 1)
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .previewDisplayName("Overflown 1 (3...4)")
             GameIndicator(content:
@@ -139,10 +128,10 @@ struct GameIndicator_Previews: PreviewProvider {
                                 EnumeratedToken(
                                     index: $0.offset,
                                     token: $0.element,
-                                    mode: GameViewMode.Roma_Kata
+                                    mode: GameViewMode.Kata_Roma
                                 )
                             }
-                          , cursor: 0)
+                , cursor: 0, failure: 0)
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .previewDisplayName("Overflown 1 (4...)")
         }

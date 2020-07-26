@@ -28,4 +28,16 @@ public extension Color {
     static let PurplePizzazz = Color("PurplePizzazz")
     static let Awesome = Color("Awesome")
     static let TexasRose = Color("TexasRose")
+    
+    /// Neumorphic Colors
+    
+    static let AquaHaze = Color("AquaHaze")
+    static let Glitter = Color("Glitter")
+    static let LightSlateGrey = Color("LightSlateGrey")
+    static let Madison = Color("Madison")
+    static let Manatee = Color("Manatee")
+    static let Nepal = Color("Nepal")
+    static let Geyser = Color("Geyser")
+    static let Biscay = Color("Biscay")
+    
 }

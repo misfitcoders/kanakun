@@ -90,13 +90,8 @@ struct GameView: View {
            NavigationView {
                 GeometryReader { geometry in
                 ZStack{
-                    LinearGradient(
-                        gradient: Gradient(
-                            colors: [Color.GovernorBay, Color.ChetwodeBlue]),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                    .aspectRatio(geometry.size, contentMode: .fill)
+                    Color.Glitter
+//                    .aspectRatio(geometry.size, contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
                     
                     VStack{
@@ -112,7 +107,8 @@ struct GameView: View {
                                         mode: self.gamePlay.mode
                                     )
                                 },
-                            cursor: self.gamePlay.cursor
+                            cursor: self.gamePlay.cursor,
+                            failure: self.gamePlay.failed
                         )
                         Spacer()
                         GamePad(
