@@ -19,8 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Unable to read managed object context.")
         }
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-
-        let contentController = GameContentController(context)
         
         let contentView = ContentView().environment(\.managedObjectContext, context)
         
@@ -29,7 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(
                 rootView: contentView
-                          .environmentObject(contentController)
+                    .environmentObject(GameContentController(context))
+                    .environmentObject(ViewRouter())
             )
             self.window = window
             window.makeKeyAndVisible()

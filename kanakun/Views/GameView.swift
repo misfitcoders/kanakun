@@ -10,9 +10,9 @@ import Combine
 import jisho_swift
 
 struct GameView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @EnvironmentObject var gameContent: GameContentController
+    @EnvironmentObject var router: ViewRouter
     @ObservedObject var gamePlay = GamePlayController.game
     @State var showingDetail = false
     
@@ -27,12 +27,11 @@ struct GameView: View {
     var bottomBar: some View {
         HStack {
             Button( action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                self.router.currentPage = .root
                 }
             ) {
-                Image(systemName: "multiply.circle.fill") //"smallcircle.fill.circle")
+                Image(systemName: "multiply.circle.fill")
                     .font(.title)
-                    //.aspectRatio(contentMode: .fit)
                     .foregroundColor(.Astronaut)
                     .padding(.leading, 20)
             }
@@ -79,20 +78,19 @@ struct GameView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     var body: some View {
         if gamePlay.content.isEmpty || gamePlay.success {
-           VStack { Text("Loading content") }
-            .onAppear { self.newGame() }
+            VStack { Text("Loading content") }
+                .onAppear { self.newGame() }
         }
         else {
-           NavigationView {
-                GeometryReader { geometry in
+            
+            GeometryReader { geometry in
                 ZStack{
                     Color.Glitter
-//                    .aspectRatio(geometry.size, contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
+                        .edgesIgnoringSafeArea(.all)
                     
                     VStack{
                         Spacer()
@@ -106,7 +104,7 @@ struct GameView: View {
                                         token: $0.element,
                                         mode: self.gamePlay.mode
                                     )
-                                },
+                            },
                             cursor: self.gamePlay.cursor,
                             failure: self.gamePlay.failed
                         )
@@ -121,17 +119,17 @@ struct GameView: View {
                                         token: $0.element,
                                         mode: self.gamePlay.mode
                                     )
-                                },
+                            },
                             checkAnswer: self.gamePlay.checkAnswer)
                             .frame(
                                 width: geometry.size.width,
                                 height: geometry.size.width,
                                 alignment: .center)
-
-//                        TimerBar(value: $progressValue)
-//                            .frame(height: 5)
-//                            .padding(.horizontal, 20)
-
+                        
+                        //                        TimerBar(value: $progressValue)
+                        //                            .frame(height: 5)
+                        //                            .padding(.horizontal, 20)
+                        
                         self.bottomBar
                             .padding(.vertical, 40)
                         
@@ -139,10 +137,7 @@ struct GameView: View {
                     .edgesIgnoringSafeArea(.bottom)
                 }
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-            }
+            
         }
     }
 }
