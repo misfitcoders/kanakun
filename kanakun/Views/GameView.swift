@@ -16,6 +16,16 @@ struct GameView: View {
     @ObservedObject var gamePlay = GamePlayController.game
     @State var showingDetail = false
     
+    var failureGradient: LinearGradient {
+        return self.gamePlay.failed > 0
+            ? LinearGradient.RedGradient
+            : LinearGradient.GreenGradient
+    }
+    
+    var failureIcon: Image {
+        Image(systemName: "\(gamePlay.failed).circle.fill")
+    }
+    
     func newGame() {
         gamePlay.startGameWith(content: gameContent.next(
             failed: gamePlay.content.isEmpty
@@ -32,7 +42,7 @@ struct GameView: View {
             ) {
                 Image(systemName: "multiply.circle.fill")
                     .font(.title)
-                    .foregroundColor(.Astronaut)
+                    .foregroundColor(.Madison)
                     .padding(.leading, 20)
             }
             Spacer()
@@ -43,7 +53,7 @@ struct GameView: View {
             }) {
                 Image(systemName: "book.fill")
                     .font(.title)
-                    .foregroundColor(.Astronaut)
+                    .foregroundColor(.Madison)
                     //.padding(30)
             }.sheet(isPresented: $showingDetail) {
                 GameDetails(
@@ -54,9 +64,13 @@ struct GameView: View {
                 ).background(Color.gray.opacity(0.5))
             }
             Spacer()
-            Image(systemName: "\(gamePlay.failed).circle.fill")
-                            .font(Font.system(.largeTitle).bold())
-                            .foregroundColor(.PersianPink)
+            
+            failureGradient
+            .mask(failureIcon.resizable().scaledToFit())
+            .frame(width: 32, height: 32)
+            .font(.system(size: 32, weight: .thin))
+            .shadow(color: .white, radius: 2, x: -3, y: -3)
+            .shadow(color: .Manatee, radius: 2, x: 3, y: 3)
                         
             Spacer()
             Button( action: {
@@ -64,7 +78,7 @@ struct GameView: View {
             }) {
                 Image(systemName: "arrow.up.arrow.down.circle.fill")
                     .font(.title)
-                    .foregroundColor(.Astronaut)
+                    .foregroundColor(.Madison)
                     //.padding(30)
             }
             Spacer()
@@ -73,7 +87,7 @@ struct GameView: View {
             }) {
                 Image(systemName: "arrow.right.circle.fill")
                     .font(.title)
-                    .foregroundColor(.Astronaut)
+                    .foregroundColor(.Madison)
                     .padding(.trailing, 20)
             }
         }

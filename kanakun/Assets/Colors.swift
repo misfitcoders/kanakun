@@ -39,5 +39,9 @@ public extension Color {
     static let Nepal = Color("Nepal")
     static let Geyser = Color("Geyser")
     static let Biscay = Color("Biscay")
+    static let DarkPastelGreen = Color("DarkPastelGreen")
+    static let SpringGreen = Color("SpringGreen")
+    static let Lust = Color("Lust")
+    static let TotemPole = Color("TotemPole")
     
 }

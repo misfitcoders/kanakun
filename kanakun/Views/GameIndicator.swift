@@ -51,19 +51,13 @@ struct GameIndicator: View {
                     .font(.system( size: fontSize ))
                     .fontWeight(.bold)
                     .foregroundColor(enumeratedToken.index > cursor
-                                        ? .LightSlateGrey
-                        :  enumeratedToken.index == cursor && self.previousFailure < failure ? .red : .Madison
+                        ? .LightSlateGrey
+                        : enumeratedToken.index == cursor
+                        && self.previousFailure < failure
+                            ? .Lust
+                            : .DarkPastelGreen
                     )
                     .padding(.all, 4)
-//                    .overlay(
-//                        Rectangle()
-//                            .fill(Color.white.opacity(0))
-//                            .border(width: 2, edge: .bottom, color: Color.Geyser.opacity(enumeratedToken.index == cursor ? 0.7 : 0))
-//
-//                        .shadow(color: .white, radius: 4, x: -2, y: -2)
-//                        .shadow(color: .Manatee, radius: 4, x: 2, y: 2)
-//                    )
-               
             }
         )
     }

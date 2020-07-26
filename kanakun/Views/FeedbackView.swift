@@ -12,24 +12,36 @@ struct FeedbackView: View {
         VStack(spacing: 30) {
             Spacer()
         Text("Welcome to KanaKun")
-            .font(.largeTitle)
-        Text("An app to practice identifying japanese kanas")
             .font(.title)
+        Text("practice identifying japanese kanas")
+            .font(.subheadline)
+            .bold()
+            .offset(x: 0, y: -20)
         Text(
 """
-In the framed text box you will see the characters to identify along with an indicator that shows the current character to identify. Right below there is a collection of buttons for which to tap the correct character.
-You can change the characters shown in both the indicator frame and the character pad by taping on the arrows button of the bottom toolbar.
-There is a book button that shows the original text, its reading format, and the many sense definitions attributed to it.
-The pink circle of the bottom toolbar will count every failed attempt, and the bouncing arrow will skip the current content bein played.
+In the upper area you will see the characters to identify along with an indicator that shows the current character in play. Right below there is a collection of buttons for which to tap the correct character.
+You can change the characters shown in both the indicator area and the character pad by taping on the arrows button of the bottom toolbar.
+There is a book button that shows the original text and its reading format, along with all the sense definitions attributed to it.
+The numbered circle of the bottom toolbar will count every failed attempt, and the bouncing arrow will skip the current content bein played.
 """         )
-            .lineSpacing(5.0)
+            .lineSpacing(4.0)
             .multilineTextAlignment(.leading)
-            .font(.body)
-            Spacer()
-             Text("For more support or to kindly send some feedback, please contact us on:")
+            .font(.system(size: 14))
+
+             Text("For support or to kindly send some feedback, please contact us on:")
+                .font(.system(size: 14))
              Text("support@misfitcoders.com")
+                .font(.caption)
+                .bold()
             Spacer()
-            
+            Text(
+"""
+This application (Kana Kun) does not perform third–party data collection of any sort, and does not include third–party advertising of any form. The data collected will never leave the device, hence will never be shared with anyone.
+"""
+            )
+                .font(.system(size: 10))
+                .foregroundColor(Color.gray)
+                .padding(.bottom, 40)
         }
         .padding(.horizontal, 30)
 

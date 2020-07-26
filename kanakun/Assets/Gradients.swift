@@ -16,6 +16,22 @@ extension LinearGradient {
       endPoint: .bottomTrailing
     )
   }
+
+    public static var GreenGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [.DarkPastelGreen, .SpringGreen]),
+            startPoint: UnitPoint(x: -0.2, y: 0.5),
+            endPoint: .bottomTrailing
+        )
+    }
+    
+    public static var RedGradient: LinearGradient {
+        LinearGradient(
+            gradient: Gradient(colors: [.Lust, .TotemPole]),
+            startPoint: UnitPoint(x: -0.2, y: 0.5),
+            endPoint: .bottomTrailing
+        )
+    }
   
   public static var DiagonalLightBorder: LinearGradient {
     LinearGradient(
