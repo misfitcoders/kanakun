@@ -42,14 +42,16 @@ struct GamePad: View {
                                         )
                                 )
                             }
-                        .overlay(
-                            Rectangle()
-                                .fill(Color.white.opacity(0))
-                                .border(width: 2, edge: .leading, color: Color.Geyser.opacity(0.7))
-                                .border(width: 2, edge: .trailing, color: Color.white.opacity(0.4))
-                                .border(width: 2, edge: .bottom, color: Color.Geyser.opacity(0.7))
-                                .border(width: 2, edge: .top, color: Color.white.opacity(0.4))
-                            )
+//                        .overlay(
+//                            Rectangle()
+//                                .fill(Color.white.opacity(0))
+//                                .border(width: 2, edge: .leading,
+//                                        color: Color.Geyser.opacity(0.7)
+//                                )
+//                                .border(width: 2, edge: .trailing, color: Color.white.opacity(0.4))
+//                                .border(width: 2, edge: .bottom, color: Color.Geyser.opacity(0.7))
+//                                .border(width: 2, edge: .top, color: Color.white.opacity(0.4))
+//                            )
                         }
                     }
                 }

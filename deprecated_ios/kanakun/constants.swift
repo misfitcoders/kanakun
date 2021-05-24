@@ -7,6 +7,8 @@
 
 import Foundation
 
+let preloadedDataKey = "dataKey"
+
 let allHiragana = [
     Character("あ"), 
     Character("い"), 

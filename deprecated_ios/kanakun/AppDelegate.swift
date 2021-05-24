@@ -137,15 +137,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     
                     // Pop cancellable
-                    if let cancellableIndex = allCancellables.firstIndex(where: { $0.id == cancellableID }) {
-                        allCancellables.remove(at: cancellableIndex)
-                    }
+//                    if let cancellableIndex = allCancellables.firstIndex(where: { $0.id == cancellableID }) {
+//                        allCancellables.remove(at: cancellableIndex)
+//                    }
                 }
                 
-                allCancellables.append((
-                    id: cancellableID,
-                    cancellable: cancellable
-                ))
+//                allCancellables.append((
+//                    id: cancellableID,
+//                    cancellable: cancellable
+//                ))
             }
         }
     }

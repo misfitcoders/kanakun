@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "jisho-swift",
+        "repositoryURL": "https://github.com/evelasko/jisho-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "ce522e4288e46048cc8fb7fa5a5da15aee535414",
+          "version": "0.0.3"
+        }
+      },
+      {
+        "package": "wanakana-swift",
+        "repositoryURL": "https://github.com/evelasko/wanakana-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "2ab9dc1168d653b00cb9c299c1bf531c65dbd289",
+          "version": "0.0.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
